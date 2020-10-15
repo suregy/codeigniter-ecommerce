@@ -11,8 +11,10 @@ class Category extends BaseController
 
 	public function index()
 	{
+		
 		$judul = [
-			'judul' => 'Data Kategori' 
+			'judul' => 'Data Kategori',
+			'data' => $this->category->getC1()
 		];
 		return view('Admin/categorys/index',$judul);
 	}
@@ -34,9 +36,12 @@ class Category extends BaseController
 	}
 
 	public function Formtambah(){
+		
 		if($this->request->isAJAX()){
+			
 			$json = [
-				'data' => view('Admin/categorys/modalTambah')
+				'data' => view('Admin/categorys/modalTambah'),	
+				'c1' => $this->category->getC1()
 			];
 
 			echo json_encode($json);
@@ -46,19 +51,117 @@ class Category extends BaseController
 		}
 	}
 
-	public function save(){
+	public function getC2(){
+		if($this->request->isAJAX()){
+			$c1 = $this->request->getVar('c1');
+			$json = [	
+				'c2' => $this->category->getC2($c1)
+			];
+
+			echo json_encode($json);
+
+
+		}else{
+			exit('maaf tidak dapat diproses');
+		}
+
+	}
+
+	public function Formtambahcat(){
+		if($this->request->isAJAX()){
+			$c2 = $this->request->getVar('c2');
+			$json = [
+				'data' => view('Admin/categorys/modalTambahcat')
+			];
+
+			echo json_encode($json);
+
+		}else{
+			exit('maaf tidak dapat diproses');
+		}
+	}
+
+	public function Simpanc1(){
+		
+			if($this->request->isAJAX()){
+
+				$validation = \Config\Services::validation();
+	
+				$valid = $this->validate([
+					'c1' => [
+						'label' => 'isi code kategori',
+						'rules' => 'required|is_unique[categories.c1]',
+						'errors' => [
+							'required' => '{field}  harus disi',
+							'is_unique' => '{field}  sudah terdaptar'
+						]
+					],
+					'nmc1' => [
+						'label' => 'isi nama kategori',
+						'rules' => 'required',
+						'errors' => [
+							'required' => '{field}  harus disi',
+						]
+					],
+				]);
+	
+				if(!$valid) {
+	
+					$json = [
+						'error' => [
+							'c1' => $validation->getError('c1'),
+							'nmc1' => $validation->getError('nmc1'),
+						]
+					];
+				}else{
+					$simpanData = [
+						'c1' => $this->request->getVar('c1'),
+						'c2' => '0',
+						'c3' => '0',
+						'namacategory' => $this->request->getVar('nmc1'),
+					];
+	
+					$this->category->insert($simpanData);
+	
+					$json = [
+						'sukses' => 'data c1 berhasil disimpan'
+					];
+				}
+				echo json_encode($json);
+			}else{
+				exit('maaf tidak dapat diproses');
+			}
+	
+	}
+
+	public function Simpanc2(){
 		
 		if($this->request->isAJAX()){
+
 
 			$validation = \Config\Services::validation();
 
 			$valid = $this->validate([
-				'cat1' => [
-					'label' => 'category 1',
-					'rules' => 'required|is_unique[categories.c1]',
+				'c2' => [
+					'label' => 'isi code kategori 2',
+					'rules' => 'required',
 					'errors' => [
 						'required' => '{field}  harus disi',
-						'is_unique' => '{field}  sudah terdaptar'
+						'required' => '{field}  harus dipilih',
+					]
+				],
+				'nmc2' => [
+					'label' => 'isi nama kategori',
+					'rules' => 'required',
+					'errors' => [
+						'required' => '{field}  harus disi',
+					]
+				],
+				'c1' => [
+					'rules' => 'required|greater_than[0]',
+					'errors' => [
+						'required' => '{field}  harus disi',
+						'greater_than' => '{field}  harus dipilih',
 					]
 				],
 			]);
@@ -67,15 +170,87 @@ class Category extends BaseController
 
 				$json = [
 					'error' => [
-						'c1' => $validation->getError('cat1'),
+						'c1' => $validation->getError('c1'),
+						'c2' => $validation->getError('c2'),
+						'nmc2' => $validation->getError('nmc2'),
 					]
 				];
 			}else{
 				$simpanData = [
-					'c1' => $this->request->getVar('cat1'),
-					'c2' => '0',
+					'c1' => $this->request->getVar('c1'),
+					'c2' => $this->request->getVar('c2'),
 					'c3' => '0',
-					'namacategory' => $this->request->getVar('namacategory'),
+					'namacategory' => $this->request->getVar('nmc2'),
+				];
+
+				$this->category->insert($simpanData);
+
+				$json = [
+					'sukses' => 'data c1 berhasil disimpan'
+				];
+			}
+			echo json_encode($json);
+		}else{
+			exit('maaf tidak dapat diproses');
+		}
+
+}
+
+	public function save(){
+		
+		if($this->request->isAJAX()){
+
+			$validation = \Config\Services::validation();
+
+			$valid = $this->validate([
+				'c3' => [
+					'label' => 'category 3',
+					'rules' => 'required',
+					'errors' => [
+						'required' => '{field}  harus disi'
+					]
+				],
+				'nmc3' => [
+					'label' => 'category 3',
+					'rules' => 'required',
+					'errors' => [
+						'required' => '{field}  harus disi'
+					]
+				],
+				'c1' => [
+					'label' => 'category 1',
+					'rules' => 'required|greater_than[0]',
+					'errors' => [
+						'required' => '{field}  harus disi',
+						'greater_than' => '{field}  harus dipilih',
+					]
+				],
+				'c2' => [
+					'label' => 'category 2',
+					'rules' => 'required|greater_than[0]',
+					'errors' => [
+						'required' => '{field}  harus disi',
+						'required' => '{field}  harus dipilih',
+					]
+				],
+			]);
+
+			if(!$valid) {
+
+				$json = [
+					'error' => [
+						'c3' => $validation->getError('c3'),
+						'nmc3' => $validation->getError('nmc3'),
+						'c1' => $validation->getError('c1'),
+						'c2' => $validation->getError('c2'),
+					]
+				];
+			}else{
+				$simpanData = [
+					'c1' => $this->request->getVar('c1'),
+					'c2' => $this->request->getVar('c2'),
+					'c3' => $this->request->getVar('c3'),
+					'namacategory' => $this->request->getVar('nmc3'),
 				];
 
 				$this->category->insert($simpanData);
