@@ -27,7 +27,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   
   <!-- sweetalert -->
   <link rel="stylesheet" href="<?= base_url('admin/plugins/sweetalert2/sweetalert2.min.css') ?>">
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="<?= base_url('admin/plugins/sweetalert2/sweetalert2.all.min.js') ?>"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> -->
 
   <!-- jQuery -->
 <script src="<?= base_url('admin/plugins/jquery/jquery.min.js') ?>"></script>

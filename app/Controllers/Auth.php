@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Models\userModel;
+use App\Models\Category_m;
 use App\Libraries\Notifikasi;
 
 
@@ -13,6 +14,7 @@ class Auth extends BaseController
 	public function __construct(){
 		helper('form' , 'date');
 		$this->userModel = new userModel();
+		$this->cat = new Category_m();
 		$this->session = session(); //pindah ke base controller
 		$this->notif = new Notifikasi();
 		$this->now = date('Y-m-d');
@@ -174,6 +176,7 @@ class Auth extends BaseController
 		$this->session->destroy();
 		return redirect()->to(base_url('/'));
 	}
+
 
 	//--------------------------------------------------------------------
 
