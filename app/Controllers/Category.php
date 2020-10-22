@@ -210,7 +210,7 @@ class Category extends BaseController
 				$valid = $this->validate([
 					'c1' => [
 						'label' => 'isi code kategori',
-						'rules' => 'required|is_unique[categories.c1]',
+						'rules' => 'required|is_unique[kategori.c1]',
 						'errors' => [
 							'required' => '{field}  harus disi',
 							'is_unique' => '{field}  sudah terdaptar'

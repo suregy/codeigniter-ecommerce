@@ -34,7 +34,8 @@ $routes->get('/', 'Home::index');
 $routes->get('/auth', 'Auth::index');
 $routes->get('/register', 'Auth::fregister');
 $routes->get('/dashboard', 'Admin::index', ['filter' => 'authfilter']);
-$routes->get('/category', 'Category::index', ['filter' => 'authfilter']);
+$routes->get('category', 'Category::index', ['filter' => 'authfilter']);
+$routes->get('tag', 'Tag::index', ['filter' => 'authfilter']);
 
 
 
