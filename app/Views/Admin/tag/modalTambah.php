@@ -67,8 +67,6 @@ $(document).ready(function(){
         
         let bulk = $('.addBulk').children().length;
 
-        console.log(bulk);
-
         $("input[name='nama[]']").each(function(){
             let value = $(this).val();
             if(value) {

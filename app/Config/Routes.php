@@ -36,6 +36,8 @@ $routes->get('/register', 'Auth::fregister');
 $routes->get('/dashboard', 'Admin::index', ['filter' => 'authfilter']);
 $routes->get('category', 'Category::index', ['filter' => 'authfilter']);
 $routes->get('tag', 'Tag::index', ['filter' => 'authfilter']);
+$routes->get('brands', 'Brands::index', ['filter' => 'authfilter']);
+$routes->get('banners', 'Banners::index', ['filter' => 'authfilter']);
 
 
 
