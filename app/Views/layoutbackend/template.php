@@ -94,5 +94,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src=<?= base_url('admin/plugins/datatables/jquery.dataTables.js') ?> "></script>
 <script src=<?= base_url('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js') ?> "></script>
 
+<!-- untuk general js -->
+<script type="text/javascript" src="<?= base_url('customjs/myjs.js') ?>"></script>
+
 </body>
 </html>

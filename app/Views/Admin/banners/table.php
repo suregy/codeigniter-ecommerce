@@ -43,9 +43,9 @@
         // untuk select all
         $('#selectAll').click(function(e){
             if($(this).is(':checked')){
-                $('.tag').prop('checked',true);
+                $('.banner').prop('checked',true);
             }else{
-                $('.tag').prop('checked',false);
+                $('.banner').prop('checked',false);
             }
         })
     });
