@@ -38,6 +38,7 @@ $routes->get('category', 'Category::index', ['filter' => 'authfilter']);
 $routes->get('tag', 'Tag::index', ['filter' => 'authfilter']);
 $routes->get('brands', 'Brands::index', ['filter' => 'authfilter']);
 $routes->get('banners', 'Banners::index', ['filter' => 'authfilter']);
+$routes->get('products', 'Products::index', ['filter' => 'authfilter']);
 
 
 

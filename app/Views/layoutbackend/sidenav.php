@@ -61,6 +61,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="<?= base_url('products') ?>" class="nav-link">
+            <i class="nav-icon fas fa-box-open"></i>
+              <p>
+                Product
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

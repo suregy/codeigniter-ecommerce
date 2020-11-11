@@ -28,6 +28,15 @@ class Category_m extends Model
         return $query = $builder->get()->getResultArray();
     }
 
+    public function getC3($c1,$c2){
+        $builder = $this->table('kategori');
+        $builder->select('c3 , namacategory');
+        $builder->where('c1', $c1);
+        $builder->where('c2', $c2);
+        $builder->where('c3 !=', '0');
+        return $query = $builder->get()->getResultArray();
+    }
+
     public function deleteMulti($id) {
         $builder = $this->table('kategori');
         $builder->whereIn('id', $id);
