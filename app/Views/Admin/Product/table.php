@@ -1,4 +1,3 @@
-
 <div class="card">
     <div class="card-body">
         <table class="table table-sm table-striped table-bordered table-hover" id="dataproduct">
@@ -13,17 +12,17 @@
                 </tr>
             </thead>
             <tbody>
-                <?php $no = 0; 
-                    foreach($tampildata as $row) : 
-                    $no ++?>
-                        <tr>
-                            <td><?= $no ?></td>
-                            <td><input type="checkbox" class="product" name="product" value="<?= $row['id'] ?>"> </td>
-                            <td><?= $row['namabrands'] ?></td>
-                            <td><?= $row['nama'] ?></td>
-                            <td class="text-right"><?= rupiah($row['hrgbeli']); ?></td>
-                            <td class="text-right"><?= rupiah($row['hrgjual']); ?></td>
-                        </tr>
+                <?php $no = 0;
+                foreach ($tampildata as $row) :
+                    $no++ ?>
+                <tr>
+                    <td><?= $no ?></td>
+                    <td><input type="checkbox" class="product" name="product" value="<?= $row['id'] ?>"> </td>
+                    <td><?= $row['namabrands'] ?></td>
+                    <td><?= $row['nama'] ?></td>
+                    <td class="text-right"><?= rupiah($row['hrgbeli']); ?></td>
+                    <td class="text-right"><?= rupiah($row['hrgjual']); ?></td>
+                </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
@@ -33,21 +32,20 @@
 
 
 <script>
-    $(document).ready(function(){
-        var table = $('#dataproduct').dataTable({
-            
-        });
-
-        // untuk select all
-        $('#selectAll').click(function(e){
-            if($(this).is(':checked')){
-                $('.product').prop('checked',true);
-            }else{
-                $('.product').prop('checked',false);
-            }
-        });
-
-    
+$(document).ready(function() {
+    var table = $('#dataproduct').dataTable({
+        "ordering": false
     });
 
+    // untuk select all
+    $('#selectAll').click(function(e) {
+        if ($(this).is(':checked')) {
+            $('.product').prop('checked', true);
+        } else {
+            $('.product').prop('checked', false);
+        }
+    });
+
+
+});
 </script>

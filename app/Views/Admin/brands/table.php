@@ -1,4 +1,3 @@
-
 <div class="card">
     <div class="card-body">
         <table class="table table-sm table-striped table-bordered table-hover" id="databrands">
@@ -10,14 +9,14 @@
                 </tr>
             </thead>
             <tbody>
-                <?php $no = 0; 
-                    foreach($getdata as $row) : 
-                    $no ++?>
-                        <tr>
-                            <td><?= $no ?></td>
-                            <td><input type="checkbox" class="tag" name="brands" value="<?= $row['id'] ?>"> </td>
-                            <td><?= $row['namabrands'] ?></td>
-                        </tr>
+                <?php $no = 0;
+                foreach ($getdata as $row) :
+                    $no++ ?>
+                    <tr>
+                        <td><?= $no ?></td>
+                        <td><input type="checkbox" class="tag" name="brands" value="<?= $row['id'] ?>"> </td>
+                        <td><?= $row['namabrands'] ?></td>
+                    </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
@@ -27,15 +26,15 @@
 
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         $('#databrands').dataTable();
 
         // untuk select all
-        $('#selectAll').click(function(e){
-            if($(this).is(':checked')){
-                $('.tag').prop('checked',true);
-            }else{
-                $('.tag').prop('checked',false);
+        $('#selectAll').click(function(e) {
+            if ($(this).is(':checked')) {
+                $('.tag').prop('checked', true);
+            } else {
+                $('.tag').prop('checked', false);
             }
         })
     });
