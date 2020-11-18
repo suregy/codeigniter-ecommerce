@@ -46,13 +46,18 @@ class Detprod extends BaseController
     public function store()
     {
         if ($this->request->isAJAX()) {
+            $id =  $this->request->getVar('detid');
             $data = [
                 'color' => $this->request->getVar('color'),
                 'size' => $this->request->getVar('size'),
                 'stok' => $this->request->getVar('stok'),
                 'product_id' => $this->request->getVar('refid')
             ];
-            $this->detail->insert($data);
+            if (empty($id)) {
+                $this->detail->insert($data);
+            } else {
+                $this->detail->update($id, $data);
+            }
             $json = [
                 'sukses' => 'data ditambahkan'
             ];

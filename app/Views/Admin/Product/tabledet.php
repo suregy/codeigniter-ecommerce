@@ -25,6 +25,7 @@
         </tr>
         <?php endforeach; ?>
     </tbody>
+
 </table>
 
 <script>
@@ -35,9 +36,17 @@ $(document).ready(function() {
 
     $('.eddet').click(function(e) {
         e.preventDefault();
-
+        $('#detid').val($(this).val());
+        var currentRow = $(this).closest("tr");
+        var col1 = currentRow.find("td:eq(1)").text();
+        var col2 = currentRow.find("td:eq(2)").text();
+        var col3 = currentRow.find("td:eq(3)").text();
+        $('#color').val(col1);
+        $('#size').val(col2);
+        $('#stok').val(col3);
         return false;
     });
+
 
     $('.eddel').click(function(e) {
         e.preventDefault();
