@@ -928,7 +928,6 @@ ol {
   list-style: none;
   display: inline-block;
   margin-right: 88px;
-  cursor: pointer;
 }
 
 .filter__controls li:last-child {
@@ -1088,7 +1087,7 @@ ol {
 
 .product__item__text .rating i {
   font-size: 14px;
-  color: #b7b7b7;
+  color: #f7941d;
   margin-right: -5px;
 }
 
@@ -1468,32 +1467,31 @@ ol {
   border-radius: 0;
 }
 
-.product__pagination {
-  padding-top: 25px;
-  text-align: center;
+.brands {
+  cursor: pointer;
 }
 
-.product__pagination a {
-  display: inline-block;
-  font-size: 16px;
-  font-weight: 700;
-  color: #111111;
-  height: 30px;
-  width: 30px;
-  border: 1px solid transparent;
-  border-radius: 50%;
-  line-height: 30px;
-  text-align: center;
+.pagination {
+  margin-top: 25px;
+  justify-content: center;
 }
-
-.product__pagination a.active {
-  border-color: #111111;
+.page-link {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #080909;
+  font-weight: 500;
 }
-
-.product__pagination a:hover {
-  border-color: #111111;
+.page-item.active .page-link {
+  z-index: 3;
+  color: #f9f4f4;
+  background-color: #000;
+  border-color: #000;
 }
-
 .product__pagination span {
   display: inline-block;
   font-size: 16px;

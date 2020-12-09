@@ -9,7 +9,16 @@
         <div class="form-group row">
             <label for="colFormLabelSm" class="col-sm-1 col-form-label col-form-label-sm">Judul</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control form-control-sm" name="judul" id="errjudul" placeholder="input judul">
+                <input type="text" class="form-control form-control-sm" name="judul" id="errjudul"
+                    placeholder="input judul">
+                <div class="invalid-feedback errjudul"></div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="colFormLabelSm" class="col-sm-1 col-form-label col-form-label-sm">deskripsi</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control form-control-sm" name="desc" id="errjudul"
+                    placeholder="input desckripsi">
                 <div class="invalid-feedback errjudul"></div>
             </div>
         </div>
@@ -67,74 +76,74 @@
 <?= form_close(); ?>
 
 <script>
-    $(document).ready(function() {
-        $('.fSimpan').submit(function(e) {
-            e.preventDefault();
-            let formData = new FormData(this);
-            formData.append('file', $('input[type=file]')[0].files[0]);
+$(document).ready(function() {
+    $('.fSimpan').submit(function(e) {
+        e.preventDefault();
+        let formData = new FormData(this);
+        formData.append('file', $('input[type=file]')[0].files[0]);
 
-            $.ajax({
-                type: 'post',
-                url: $(this).attr('action'),
-                dataType: 'json',
-                cache: false,
-                contentType: false,
-                processData: false,
-                async: false,
-                data: new FormData(this),
-                beforeSend: function() {
-                    $('.btnSimpan').attr('disabled', 'disabled');
-                    $('.btnSimpan').html('<i class="fas fa-spin fa-spinner"></i>');
-                },
-                complete: function() {
-                    $('.btnSimpan').removeAttr('disabled');
-                    $('.btnSimpan').html('Simpan');
-                },
-                success: function(response) {
-                    if (response.error) {
-                        if (response.error.judul) {
-                            $('#errjudul').addClass('is-invalid');
-                            $('.errjudul').html(response.error.judul);
-                        } else {
-                            $('#errjudul').removeClass('is-invalid');
-                            $('.errjudul').html('');
-                        }
-                        if (response.error.status) {
-                            $('#errStatus').addClass('is-invalid');
-                            $('.errStatus').html(response.error.status);
-                        } else {
-                            $('#errStatus').removeClass('is-invalid');
-                            $('.errStatus').html('');
-                        }
-                        if (response.error.file) {
-                            $('#errFile').addClass('is-invalid');
-                            $('.errFile').html(response.error.file);
-                        } else {
-                            $('#errFile').removeClass('is-invalid');
-                            $('.errFile').html('');
-                        }
+        $.ajax({
+            type: 'post',
+            url: $(this).attr('action'),
+            dataType: 'json',
+            cache: false,
+            contentType: false,
+            processData: false,
+            async: false,
+            data: new FormData(this),
+            beforeSend: function() {
+                $('.btnSimpan').attr('disabled', 'disabled');
+                $('.btnSimpan').html('<i class="fas fa-spin fa-spinner"></i>');
+            },
+            complete: function() {
+                $('.btnSimpan').removeAttr('disabled');
+                $('.btnSimpan').html('Simpan');
+            },
+            success: function(response) {
+                if (response.error) {
+                    if (response.error.judul) {
+                        $('#errjudul').addClass('is-invalid');
+                        $('.errjudul').html(response.error.judul);
                     } else {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Berhasil',
-                            text: response.sukses,
-                        }).then((result) => {
-                            if (result.value) {
-                                window.location.href = ("<?= base_url('banners') ?>");
-                            }
-                        });
+                        $('#errjudul').removeClass('is-invalid');
+                        $('.errjudul').html('');
                     }
-                },
-                error: function(xhr, ajaxOptions, thrownError) {
-                    alert(xhr.status + '\n' + xhr.responseText + '\n' + thrownError);
+                    if (response.error.status) {
+                        $('#errStatus').addClass('is-invalid');
+                        $('.errStatus').html(response.error.status);
+                    } else {
+                        $('#errStatus').removeClass('is-invalid');
+                        $('.errStatus').html('');
+                    }
+                    if (response.error.file) {
+                        $('#errFile').addClass('is-invalid');
+                        $('.errFile').html(response.error.file);
+                    } else {
+                        $('#errFile').removeClass('is-invalid');
+                        $('.errFile').html('');
+                    }
+                } else {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil',
+                        text: response.sukses,
+                    }).then((result) => {
+                        if (result.value) {
+                            window.location.href = ("<?= base_url('banners') ?>");
+                        }
+                    });
                 }
-            });
-        });
-
-        $('.btnBack').click(function(e) {
-            e.preventDefault();
-
-            tampilData();
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + '\n' + xhr.responseText + '\n' + thrownError);
+            }
         });
     });
+
+    $('.btnBack').click(function(e) {
+        e.preventDefault();
+
+        tampilData();
+    });
+});
 </script>

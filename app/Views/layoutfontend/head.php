@@ -8,7 +8,7 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
-    rel="stylesheet">
+        rel="stylesheet">
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="<?= base_url('malefashion/css/bootstrap.min.css') ?>" type="text/css">
@@ -20,5 +20,5 @@
     <link rel="stylesheet" href="<?= base_url('malefashion/css/slicknav.min.css') ?>" type="text/css">
     <link rel="stylesheet" href="<?= base_url('malefashion/css/style.css') ?>" type="text/css">
     <link rel="stylesheet" href="<?= base_url('malefashion/css/bootstrap-datepicker.min.css') ?>" type="text/css">
-   
+    <script src="<?= base_url('malefashion/js/jquery-3.3.1.min.js') ?>"></script>
 </head>

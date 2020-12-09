@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers;
 
 /**
@@ -26,7 +27,7 @@ class BaseController extends Controller
 	 *
 	 * @var array
 	 */
-	protected $helpers = ['form', 'url', 'date'];
+	protected $helpers = ['form', 'url', 'date', 'rupiah_helper'];
 
 	/**
 	 * Constructor.
@@ -43,6 +44,4 @@ class BaseController extends Controller
 		// $this->session = \Config\Services::session();
 		session();
 	}
-
-
 }

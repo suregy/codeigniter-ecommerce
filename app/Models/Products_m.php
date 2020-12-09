@@ -8,7 +8,7 @@ class Products_m extends Model
 {
     protected $table      = 'products';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['c1', 'c2', 'c3', 'idbrand', 'nama', 'slug', 'deskripsi', 'hrgbeli', 'hrgjual'];
+    protected $allowedFields = ['c1', 'c2', 'c3', 'idbrand', 'nama', 'slug', 'deskripsi', 'hrgbeli', 'hrgjual', 'image'];
 
     public function joinBrand()
     {
@@ -33,6 +33,17 @@ class Products_m extends Model
             $builder->where('products.c3', $c3);
         }
         return $query = $builder->get()->getResultArray();
+    }
+
+    public function shop($brand = null)
+    {
+        $builder = $this->table('products');
+        if ($brand !== null) {
+            $builder->where('idbrand', $brand);
+        } else {
+            $builder->select('*');
+        }
+        return  $builder;
     }
 
     public function store($data)

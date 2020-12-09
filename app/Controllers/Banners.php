@@ -91,6 +91,7 @@ class Banners extends BaseController
                 ];
             } else {
                 $judul = $this->request->getVar('judul');
+                $desc = $this->request->getVar('desc');
                 $url = $this->request->getVar('url');
                 $status = $this->request->getVar('status');
                 $date = $this->request->getVar('date');
@@ -100,6 +101,7 @@ class Banners extends BaseController
 
                 $data = [
                     'banner' => $judul,
+                    'desc' => $desc,
                     'url' => $url,
                     'status' => $status,
                     'date_create' => $date,
@@ -130,6 +132,7 @@ class Banners extends BaseController
             $data = [
                 'id' => $row['id'],
                 'banner' => $row['banner'],
+                'desc' => $row['desc'],
                 'image' => $row['image'],
                 'url' => $row['url'],
                 'status' => $row['status'],
@@ -184,6 +187,7 @@ class Banners extends BaseController
             } else {
                 $id = $this->request->getVar('id');
                 $judul = $this->request->getVar('judul');
+                $desk = $this->request->getVar('deskripsi');
                 $url = $this->request->getVar('url');
                 $status = $this->request->getVar('status');
                 $date = $this->request->getVar('date');
@@ -199,13 +203,14 @@ class Banners extends BaseController
 
                 $data = [
                     'banner' => $judul,
+                    'desc' => $desk,
                     'url' => $url,
                     'status' => $status,
                     'date_create' => $date,
                     'image' => $randomName,
                 ];
 
-                $insert = $this->banners->update($id, $data);
+                $this->banners->update($id, $data);
 
                 $json = [
                     'sukses' => 'data berhasil disimpan'

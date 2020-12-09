@@ -119,6 +119,7 @@ class Products extends BaseController
 		if ($this->request->isAJAX()) {
 			$judul = $this->request->getVar('nama');
 			$slug = url_title($judul, '-', true);
+
 			$data = [
 				'c1' => $this->request->getVar('cmbcat1'),
 				'c2' => $this->request->getVar('cmbcat2'),
@@ -152,6 +153,10 @@ class Products extends BaseController
 								'idproduct' => $insert,
 								'file' => $randomName,
 							]);
+							$image = [
+								'image' => $randomName
+							];
+							$this->product->update($insert, $image);
 							$img->move('images/products', $randomName);
 						}
 					}
