@@ -35,15 +35,45 @@ class Products_m extends Model
         return $query = $builder->get()->getResultArray();
     }
 
-    public function shop($brand = null)
+    public function shop($brand = null, $cat = null)
     {
         $builder = $this->table('products');
-        if ($brand !== null) {
+        if ($brand !== null && $cat !== null) {
+            $builder->where('idbrand', $brand);
+            $builder->where('c2', $cat);
+        } elseif ($cat !== null) {
+            $builder->where('c2', $cat);
+        } elseif ($brand !== null) {
             $builder->where('idbrand', $brand);
         } else {
             $builder->select('*');
         }
         return  $builder;
+    }
+
+    public function detail($slug)
+    {
+        $builder = $this->table('products');
+        $builder->where('slug', $slug);
+        $query = $builder->get()->getResultArray();
+        foreach ($query as $i => $prod) {
+            $bl = $this->db->table('image_prod');
+            $bl->where('idproduct', $prod['id']);
+            $img = $bl->get()->getResultArray();
+            $query[$i]['images'] = $img;
+            $detq = $this->db->table('product_det');
+            $detq->where('product_id', $prod['id']);
+            $det = $detq->get()->getResultArray();
+            $query[$i]['detail'] = $det;
+            $dttag = $this->db->table('detail_tags');
+            $dttag->select('detail_tags.*, tags.nama');
+            $dttag->join('tags', 'detail_tags.idtags = tags.id');
+            $dttag->where('detail_tags.idproduct', $prod['id']);
+            $tag = $dttag->get()->getResultArray();
+            $query[$i]['tags'] = $tag;
+        }
+
+        return $query;
     }
 
     public function store($data)

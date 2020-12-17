@@ -1,30 +1,39 @@
 $(document).ready(function () {
   const brand = $('.brands');
-  var href = window.location.href;
-  var patt1 = /[?]/g;
-  $('.sort').change(function () {
-    $('select option:selected').each(function (e) {
-      let sort1 = $(this).attr('value');
-      let concat = '';
-      if (href.match(patt1)) {
-        concat = href + '&' + sort1;
-      } else {
-        concat = href + '?' + dtbrand;
-      }
-      window.location.href = concat;
+  const surt = $('.surt');
+  const cat = $('.category');
+
+  $('select#sort').change(function (e) {
+    $('select option:selected').each(function () {
+      let data = $(this).attr('data-type');
+      addOrUpdateUrlParam('sort', data);
     });
   });
+
+  for (let i = 0; i < cat.length; i++) {
+    cat[i].addEventListener('click', function (e) {
+      let dtcat = $(this).attr('data-type');
+      addOrUpdateUrlParam('cat', dtcat);
+    });
+  }
 
   for (let i = 0; i < brand.length; i++) {
     brand[i].addEventListener('click', function (e) {
       let dtbrand = $(this).attr('data-type');
-      let concat1 = '';
-      if (href.match(patt1)) {
-        concat1 = href + '&' + dtbrand;
-      } else {
-        concat1 = href + '?' + dtbrand;
-      }
-      window.location.href = concat1;
+      addOrUpdateUrlParam('brand', dtbrand);
     });
   }
 });
+
+function addOrUpdateUrlParam(name, value) {
+  var href = window.location.href;
+  var regex = new RegExp('[&\\?]' + name + '=');
+  if (regex.test(href)) {
+    regex = new RegExp('([&\\?])' + name + '=\\d+');
+    window.location.href = href.replace(regex, '$1' + name + '=' + value);
+  } else {
+    if (href.indexOf('?') > -1)
+      window.location.href = href + '&' + name + '=' + value;
+    else window.location.href = href + '?' + name + '=' + value;
+  }
+}

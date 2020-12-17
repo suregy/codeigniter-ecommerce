@@ -1,4 +1,6 @@
-<?php namespace Config;
+<?php
+
+namespace Config;
 
 use CodeIgniter\Config\BaseConfig;
 
@@ -207,7 +209,7 @@ class App extends BaseConfig
 	public $cookiePrefix   = '';
 	public $cookieDomain   = '';
 	public $cookiePath     = '/';
-	public $cookieSecure   = false;
+	public $cookieSecure   = true; //diedit oleh saya
 	public $cookieHTTPOnly = false;
 
 	/*

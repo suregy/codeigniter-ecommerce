@@ -20,7 +20,7 @@
                     <td><input type="checkbox" class="product" name="product" value="<?= $row['id'] ?>"> </td>
                     <td><?= $row['namabrands'] ?></td>
                     <td><?= $row['nama'] ?></td>
-                    <td class="text-right"><?= rupiah($row['hrgbeli']); ?></td>
+                    <td class="text-right"><?= rupiah($rosew['hrgbeli']); ?></td>
                     <td class="text-right"><?= rupiah($row['hrgjual']); ?></td>
                 </tr>
                 <?php endforeach; ?>

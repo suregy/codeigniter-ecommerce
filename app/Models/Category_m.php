@@ -47,4 +47,15 @@ class Category_m extends Model
         $builder->whereIn('id', $id);
         $builder->delete();
     }
+
+    public function countcat($c1)
+    {
+        $builder = $this->table('kategori');
+        $builder->select('kategori.c2,kategori.namacategory, b.count');
+        $builder->join("(select c1,c2,count(c2) as count from products group by c1,c2) as b", "kategori.c2=b.c2", 'left');
+        $builder->where('kategori.c1 =', $c1);
+        $builder->where('kategori.c2 <>', '0');
+        $builder->where('kategori.c3 = ', '0');
+        return $builder->get()->getResultArray();
+    }
 }

@@ -41,15 +41,11 @@
                                     <div class="card-body">
                                         <div class="shop__sidebar__categories">
                                             <ul class="nice-scroll">
-                                                <li><a href="#">Men (20)</a></li>
-                                                <li><a href="#">Women (20)</a></li>
-                                                <li><a href="#">Bags (20)</a></li>
-                                                <li><a href="#">Clothing (20)</a></li>
-                                                <li><a href="#">Shoes (20)</a></li>
-                                                <li><a href="#">Accessories (20)</a></li>
-                                                <li><a href="#">Kids (20)</a></li>
-                                                <li><a href="#">Kids (20)</a></li>
-                                                <li><a href="#">Kids (20)</a></li>
+
+                                                <?php foreach ($c2 as $indx => $c2) :   ?>
+                                                    <li><a class="category" data-type="<?= $c2['c2'] ?>" value=" <?= $c2['c2'] ?>"><?= $c2['namacategory']; ?>
+                                                            (<?= $c2['count'] > '0' ? $c2['count'] : '0'  ?>)</a></li>
+                                                <?php endforeach; ?>
                                             </ul>
                                         </div>
                                     </div>
@@ -63,17 +59,15 @@
                                     <div class="card-body">
                                         <div class="shop__sidebar__brand">
                                             <?php foreach ($brands as $br) : ?>
-                                            <ul>
-                                                <li><a class="brands"
-                                                        data-type="brand=<?= $br['id']; ?>"><?= $br['namabrands']; ?></a>
-                                                </li>
-                                            </ul>
+                                                <ul>
+                                                    <li><a class="brands" value="<?= $br['id']; ?>" data-type="<?= $br['id']; ?>"><?= $br['namabrands']; ?></a>
+                                                    </li>
+                                                </ul>
                                             <?php endforeach; ?>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -89,9 +83,9 @@
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="shop__product__option__right">
                                 <p>Urutkan:</p>
-                                <select class="sort" name="sort">
-                                    <option value="sort=asc" selected>Termurah</option>
-                                    <option value="sort=desc"> Termahal</option>
+                                <select id="sort">
+                                    <option data-type="1">Termurah</option>
+                                    <option data-type="2">Termahal</option>
                                 </select>
                             </div>
                         </div>
@@ -99,30 +93,29 @@
                 </div>
                 <div class="row">
                     <?php foreach ($produk as $pr) : ?>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg"
-                                data-setbg="<?= base_url('images/products/' . $pr['image']); ?>">
-                                <ul class="product__hover">
-                                    <li><a href="#"><img src="<?= base_url('img/icon/heart.png') ?>" alt=""></a></li>
-                                    </li>
-                                    <li><a href="#"><img src="<?= base_url('img/icon/search.png') ?>" alt=""></a></li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><?= $pr['nama']; ?></h6>
-                                <a href="#" class="add-cart">+ Add To Cart</a>
-                                <div class="rating">
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" data-setbg="<?= base_url('images/products/' . $pr['image']); ?>">
+                                    <ul class="product__hover">
+                                        <li><a href="#"><img src="<?= base_url('img/icon/heart.png') ?>" alt=""></a></li>
+                                        </li>
+                                        <li><a href="<?= base_url('produk/' . $pr['slug']); ?>"><img src="<?= base_url('img/icon/search.png') ?>" alt=""></a></li>
+                                    </ul>
                                 </div>
-                                <h5><?= rupiah($pr['hrgjual']); ?></h5>
+                                <div class="product__item__text">
+                                    <h6><?= $pr['nama']; ?></h6>
+                                    <a href="#" class="add-cart">+ Add To Cart</a>
+                                    <div class="rating">
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+                                    <h5><?= rupiah($pr['hrgjual']); ?></h5>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     <?php endforeach; ?>
                 </div>
                 <div class="row">

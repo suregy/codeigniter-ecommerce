@@ -33,6 +33,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/catalog/(:segment)', 'Home::category/$1');
+$routes->get('/produk/(:segment)', 'Home::produk/$1');
 $routes->get('/auth', 'Auth::index');
 $routes->get('/register', 'Auth::fregister');
 $routes->get('/dashboard', 'Admin::index', ['filter' => 'authfilter']);
