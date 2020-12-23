@@ -11,20 +11,20 @@
 
     <!-- Offcanvas Menu Begin -->
     <div class="offcanvas-menu-overlay"></div>
-    
+
     <?= $this->include('layoutfontend/haedermini') ?>
     <!-- Offcanvas Menu End -->
 
     <!-- Header Section Begin -->
     <?= $this->include('layoutfontend/header') ?>
     <!-- Header Section End -->
-    
+
 
     <!-- render section -->
     <?= $this->renderSection('content') ?>
 
-    
-   
+
+
 
     <!-- Footer Section Begin -->
     <?= $this->include('layoutfontend/footer') ?>
@@ -40,6 +40,73 @@
         </div>
     </div>
     <!-- Search End -->
+
+    <!-- keranjang belanja Begin -->
+    <div class="backdrop"></div>
+    <div class="cart-model">
+        <div class="cart-model-wrapper">
+            <div class="header">
+                <i class="fa fa-close close-switch"></i>
+                KERANJANG BELANJA
+            </div>
+            <div class="cart-wrapper">
+                <div class="product__cart__item">
+                    <div class="product__cart__item__pic">
+                        <img src="img/shopping-cart/cart-1.jpg" alt="">
+                    </div>
+                    <div class="product__cart__item__text">
+                        <a href="">
+                            <h6 class="name">T-shirt Contrast Pocket</h6>
+                        </a>
+                        <h5 class="harga">Rp. 127.000</h5>
+                        <p>Jumlah : 1 / Ukuran : L
+                        </p>
+                    </div>
+                    <div class="product__cart__item__del">
+                        <i class="fa fa-trash"></i>
+                    </div>
+                </div>
+                <div class="product__cart__item">
+                    <div class="product__cart__item__pic">
+                        <img src="img/shopping-cart/cart-1.jpg" alt="">
+                    </div>
+                    <div class="product__cart__item__text">
+                        <a href="">
+                            <h6 class="name">T-shirt Contrast Pocket</h6>
+                        </a>
+                        <h5 class="harga">Rp. 127.000</h5>
+                        <p>Jumlah : 1 / Ukuran : L / Warna : <span style="background-color: #b74d24;"></span></p>
+                    </div>
+                    <div class="product__cart__item__del">
+                        <i class="fa fa-trash"></i>
+                    </div>
+                </div>
+                <div class="product__cart__item">
+                    <div class="product__cart__item__pic">
+                        <img src="img/shopping-cart/cart-1.jpg" alt="">
+                    </div>
+                    <div class="product__cart__item__text">
+                        <a href="">
+                            <h6 class="name">T-shirt Contrast Pocket</h6>
+                        </a>
+                        <h5 class="harga">Rp. 127.000</h5>
+                        <p>Jumlah : 1 / Ukuran : L / Warna : <span style="background-color: #b74d24;"></span></p>
+                    </div>
+                    <div class="product__cart__item__del">
+                        <i class="fa fa-trash"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="cart-footer">
+                <div class="footer-total">
+                    <span class="sum">Total</span>
+                    <span class="sum_total">Rp. 120.000,00</span>
+                </div>
+                <a href="#" class="primary-btn">go to cart</a>
+            </div>
+        </div>
+    </div>
+    <!-- keranjan belanja End -->
 
     <!-- Js Plugins -->
     <?= $this->include('layoutfontend/js') ?>

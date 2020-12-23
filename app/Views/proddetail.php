@@ -83,7 +83,6 @@
                                             <input type="radio" name="color" id="<?= $dt['color'] ?>">
                                         </label>
                                     <?php endforeach; ?>
-
                                 </div>
                             </div>
                             <div class="product__details__cart__option">
@@ -92,11 +91,11 @@
                                         <input type="text" value="1">
                                     </div>
                                 </div>
-                                <a href="#" class="primary-btn">add to cart</a>
+                                <button class="primary-btn addCart">add to cart</button>
                             </div>
                             <div class="product__details__btns__option">
                                 <a href="#"><i class="fa fa-heart"></i> add to wishlist</a>
-                                <a href="#"><i class="fa fa-exchange"></i> Add To Compare</a>
+
                             </div>
                             <div class="product__details__last__option">
                                 <h5><span>Guaranteed Safe Checkout</span></h5>
@@ -205,4 +204,11 @@
     <?php endforeach; ?>
 </section>
 <!-- Shop Details Section End -->
+<script>
+    $(document).ready(function(e) {
+        $('.addCart').click(function(e) {
+            alert('OK');
+        });
+    })
+</script>
 <?= $this->endSection(); ?>

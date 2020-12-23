@@ -17,7 +17,7 @@
         <a href="#" class="search-switch"><img src="<?= base_url('img/icon/search.png') ?>" alt="wkwk"></a>
         <a href="#"><img src="<?= base_url('img/icon/heart.png') ?>" alt=""></a>
         <a href="#"><img src="<?= base_url('img/icon/cart.png') ?>" alt=""> <span>0</span></a>
-        <div class="price">$0.00</div>
+
     </div>
     <div id="mobile-menu-wrap"></div>
     <div class="offcanvas__text">

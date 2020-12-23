@@ -49,6 +49,19 @@
     });
   });
 
+  //keranjang belanja Switch
+  $('.cart-switch').on('click', function () {
+    $('.cart-model').addClass('slide');
+    $('.backdrop').addClass('open');
+  });
+  $('.backdrop').on('click', function () {
+    $('.cart-model').removeClass('slide');
+    $('.backdrop').removeClass('open');
+  });
+  $('.close-switch').on('click', function () {
+    $('.cart-model').removeClass('slide');
+    $('.backdrop').removeClass('open');
+  });
   /*------------------
 		Navigation
 	--------------------*/
