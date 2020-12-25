@@ -36,6 +36,8 @@ $routes->get('/catalog/(:segment)', 'Home::category/$1');
 $routes->get('/produk/(:segment)', 'Home::produk/$1');
 $routes->get('/auth', 'Auth::index');
 $routes->get('/register', 'Auth::fregister');
+$routes->get('/buy/(:segment)', 'Cart::addCart/$1');
+$routes->get('/remove/(:segment)', 'Cart::remove/$1');
 $routes->get('/dashboard', 'Admin::index', ['filter' => 'authfilter']);
 $routes->get('category', 'Category::index', ['filter' => 'authfilter']);
 $routes->get('tag', 'Tag::index', ['filter' => 'authfilter']);

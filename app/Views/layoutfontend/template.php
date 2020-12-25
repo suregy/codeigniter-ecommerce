@@ -5,9 +5,9 @@
 
 <body>
     <!-- Page Preloder -->
-    <div id="preloder">
+    <!-- <div id="preloder">
         <div class="loader"></div>
-    </div>
+    </div> -->
 
     <!-- Offcanvas Menu Begin -->
     <div class="offcanvas-menu-overlay"></div>
@@ -50,7 +50,27 @@
                 KERANJANG BELANJA
             </div>
             <div class="cart-wrapper">
+                <?php if (session()->has('cart')) : $items = $_SESSION['cart']; ?>
+                <?php foreach ($items as $item) : ?>
                 <div class="product__cart__item">
+                    <div class="product__cart__item__pic">
+                        <img src="<?= base_url('images/products/' . $item['image']); ?>" alt="">
+                    </div>
+                    <div class="product__cart__item__text">
+                        <a href="">
+                            <h6 class="name"><?= $item['nama'] ?></h6>
+                        </a>
+                        <h5 class="harga"><?= $item['hrgjual'] ?></h5>
+                        <p>Jumlah : <?= $item['qty'] ?> / Ukuran : L
+                        </p>
+                    </div>
+                    <div class="product__cart__item__del">
+                        <a href="<?= base_url('remove/' . $item['id']); ?>"><i class="fa fa-trash"></i></a>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+                <?php endif; ?>
+                <!-- <div class="product__cart__item">
                     <div class="product__cart__item__pic">
                         <img src="img/shopping-cart/cart-1.jpg" alt="">
                     </div>
@@ -95,14 +115,23 @@
                     <div class="product__cart__item__del">
                         <i class="fa fa-trash"></i>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="cart-footer">
                 <div class="footer-total">
                     <span class="sum">Total</span>
-                    <span class="sum_total">Rp. 120.000,00</span>
+                    <span class="sum_total">
+                        <?php if (session()->has('cart')) : $total =  $_SESSION['cart'];
+                            $s = 0 ?>
+                        <?php foreach ($total as $tot) :  $s += $item['qty'] * $item['hrgjual']; ?>
+                        <?= rupiah($s); ?>
+                        <?php endforeach; ?>
+                        <?php else : ?>
+                        0
+                        <?php endif; ?>
+                    </span>
                 </div>
-                <a href="#" class="primary-btn">go to cart</a>
+                <a href="#" class="primary-btn">Checkout </a>
             </div>
         </div>
     </div>

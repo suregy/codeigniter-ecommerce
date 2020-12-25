@@ -10,19 +10,19 @@
                 <div class="col-lg-6 col-md-5">
                     <div class="header__top__right">
                         <?php if (!session()->has('isLoggedIn')) : ?>
-                        <div class="header__top__links">
-                            <a href="<?= base_url('/auth') ?>">Sign in</a>
-                            <a href="#">FAQs</a>
-                        </div>
+                            <div class="header__top__links">
+                                <a href="<?= base_url('/auth') ?>">Sign in</a>
+                                <a href="#">FAQs</a>
+                            </div>
                         <?php elseif (session()->has('isLoggedIn')) : ?>
-                        <div class="header__top__hover">
-                            <span>My Account <i class="arrow_carrot-down"></i></span>
-                            <ul>
-                                <li><a class="link__saya" href="">My Profile</a></li>
-                                <li><a class="link__saya" href="">My Order</a></li>
-                                <li><a class="link__saya" href="Auth/logout">Logout</a></li>
-                            </ul>
-                        </div>
+                            <div class="header__top__hover">
+                                <span>My Account <i class="arrow_carrot-down"></i></span>
+                                <ul>
+                                    <li><a class="link__saya" href="">My Profile</a></li>
+                                    <li><a class="link__saya" href="">My Order</a></li>
+                                    <li><a class="link__saya" href="Auth/logout">Logout</a></li>
+                                </ul>
+                            </div>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -59,8 +59,14 @@
                 <div class="header__nav__option">
                     <a href="#" class="search-switch"><img src="<?= base_url('img/icon/search.png') ?>" alt=""></a>
                     <a href="#"><img src="<?= base_url('img/icon/heart.png') ?>" alt=""></a>
-                    <a href="#" class="cart-switch"><img src="<?= base_url('img/icon/cart.png') ?>" alt="">
-                        <span>0</span></a>
+                    <a class="cart-switch"><img src="<?= base_url('img/icon/cart.png') ?>" alt="">
+                        <span>
+                            <?php if (session()->has('cart')) : ?>
+                                <?= array_sum(array_column($_SESSION['cart'], 'qty')) ?>
+                            <?php else : ?>
+                                0
+                            <?php endif; ?>
+                        </span></a>
                 </div>
             </div>
         </div>

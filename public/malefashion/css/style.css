@@ -374,6 +374,10 @@ ol {
   border: 1px solid #e0e0e0;
 }
 
+.cart-switch {
+  cursor: pointer;
+}
+
 .cart-model-wrapper
   .cart-wrapper
   .product__cart__item
@@ -433,8 +437,17 @@ ol {
   right: 40px;
 }
 
+.cart-model-wrapper
+  .cart-wrapper
+  .product__cart__item
+  .product__cart__item__del
+  a
+  i {
+  color: #b8b8b8;
+}
+
 .cart-model-wrapper .cart-footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
   margin: 8px;
   padding: 5px 0;
@@ -449,7 +462,7 @@ ol {
 }
 
 .cart-model-wrapper .cart-footer .primary-btn {
-  padding: 14px 120px;
+  padding: 14px 140px;
 }
 
 .backdrop {

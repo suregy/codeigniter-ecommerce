@@ -16,6 +16,7 @@ class Home extends BaseController
 	protected $pr;
 	protected $det;
 
+
 	public function __construct()
 	{
 		$this->banners = new Banners_m();
@@ -23,13 +24,16 @@ class Home extends BaseController
 		$this->br = new Brands_m();
 		$this->pr = new Products_m();
 		$this->det = new Detprod_m();
+		$this->session = session();
 	}
 
 	public function index()
 	{
 		$data = [
-			'banners' => $this->banners->findAll()
+			'banners' => $this->banners->findAll(),
+			'count' =>  $this->session->get('cart'),
 		];
+		// dd($data['count']);
 		return view('index', $data);
 	}
 
