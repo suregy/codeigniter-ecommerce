@@ -2532,6 +2532,8 @@ ol {
   .product__cart__item__pic {
   float: left;
   margin-right: 30px;
+  width: 90px;
+  height: 90px;
 }
 
 .shopping__cart__table
@@ -2705,6 +2707,17 @@ ol {
   right: 0;
   top: 0;
   height: 100%;
+}
+
+.cart__alamat {
+  background: #f3f2ee;
+  padding: 35px 40px 40px;
+}
+.cart__alamat h6 {
+  color: #111111;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
 }
 
 .cart__total {

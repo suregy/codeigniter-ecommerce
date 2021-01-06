@@ -1,5 +1,5 @@
 <script src="<?= base_url('malefashion/js/bootstrap.min.js') ?>"></script>
-<script src="<?= base_url('malefashion/js/jquery.nice-select.min.js') ?>"></script>
+<!-- <script src="<?= base_url('malefashion/js/jquery.nice-select.min.js') ?>"></script> -->
 <script src="<?= base_url('malefashion/js/jquery.nicescroll.min.js') ?>"></script>
 <script src="<?= base_url('malefashion/js/jquery.magnific-popup.min.js') ?>"></script>
 <script src="<?= base_url('malefashion/js/jquery.countdown.min.js') ?>"></script>
